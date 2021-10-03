@@ -15,7 +15,6 @@
   // hold the name of the todo being edited
   let name = todo.name                    
   let start = todo.start  
-  // hold the name of the todo being edited
   let end = todo.end                  
 
   function update(updatedTodo) {
