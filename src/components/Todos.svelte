@@ -3,12 +3,11 @@
   import Todo from './Todo.svelte'
   import MoreActions from './MoreActions.svelte'
   import NewTodo from './NewTodo.svelte'
-  import TodosStatus from './TodosStatus.svelte'
+
 
   export let todos = []
 
-  // reference to TodosStatus instance
-  let todosStatus                   
+              
 
   $: newTodoId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1
 
@@ -18,9 +17,6 @@
 
   function removeTodo(todo) {
     todos = todos.filter(t => t.id !== todo.id)
-    // give focus to status heading
-    todosStatus.focus()             
- 
   }
 
   function updateTodo(todo) {
@@ -48,9 +44,6 @@
   <!-- NewTodo -->
   <NewTodo autofocus on:addTodo={e => addTodo(e.detail)} />
 
-  <!-- TodosStatus -->
-  <TodosStatus bind:this={todosStatus} {todos} />
-
   <!-- Todos -->
   <ul role="list" aria-labelledby="list-heading">
   {#each filterTodos(filter, todos) as todo (todo.id)}
@@ -61,7 +54,7 @@
       />
     </li>
   {:else}
-    <li>Nothing to do here!</li>
+    <li>Nothing to do I guess 🤷‍♂️!</li>
   {/each}
   </ul>
 
