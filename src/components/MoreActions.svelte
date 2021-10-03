@@ -18,6 +18,6 @@
 </script>
 
 <div>
-  <button type="button" disabled={todos.length === 0} on:click={checkAll}>{completed ? 'Check' : 'Uncheck'} all</button>
-  <button type="button" disabled={completedTodos === 0} on:click={removeCompleted}>Remove completed</button>
+  <button type="button" disabled={todos.length === 0} on:click={checkAll}>{completed ? 'Select' : 'Deselect'} All</button>
+  <button type="button" disabled={completedTodos === 0} on:click={removeCompleted}>Delete Selected</button>
 </div>

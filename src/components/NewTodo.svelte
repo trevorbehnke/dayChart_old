@@ -40,5 +40,5 @@
   <input bind:value={name} bind:this={nameEl} use:selectOnFocus type="text" id="todo-0" autoComplete="off"/>
   <input bind:value={start} type="time" id="start-0" autoComplete="off"/>
   <input bind:value={end} type="time" id="start-0" autoComplete="off"/>
-  <button type="submit" disabled={!name}>+</button>
+  <button type="submit" disabled={!name}>Add</button>
 </form>

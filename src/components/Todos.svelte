@@ -4,10 +4,7 @@
   import MoreActions from './MoreActions.svelte'
   import NewTodo from './NewTodo.svelte'
 
-
   export let todos = []
-
-              
 
   $: newTodoId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1
 

@@ -66,23 +66,21 @@
 {#if editing}
   <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
     <div>
-      <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
+      <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
       <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off" />
       <input bind:value={end}  type="time" id="todo-{todo.id}" autoComplete="off" />
-    </div>
-    <div>
       <button on:click={onCancel} type="button">Cancel</button>
-      <button type="submit" disabled={!name}>+</button>
+      <button type="submit" disabled={!name}>Add</button>
     </div>
   </form>
 {:else}
   <div>
     <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
     <label for="todo-{todo.id}" >{todo.name}</label>
-    <input type="time" disabled="true" for="todo-{todo.start}" c bind:value={todo.start}/>
+    <input type="time" disabled="true" for="todo-{todo.start}" bind:value={todo.start}/>
     <input type="time" disabled="true" for="todo-{todo.end}"  bind:value={todo.end}/>
     <button type="button" on:click={onEdit} use:focusEditButton>Edit</button>
-    <button type="button" on:click={onRemove}>-</button>
+    <button type="button" on:click={onRemove}>Delete</button>
   </div>
 {/if}
 </div>
