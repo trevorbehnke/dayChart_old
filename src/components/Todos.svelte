@@ -44,7 +44,7 @@
   <!-- Todos -->
   <ul role="list" aria-labelledby="list-heading">
   {#each filterTodos(filter, todos) as todo (todo.id)}
-    <li class="todo">
+    <li >
       <Todo {todo}
         on:update={e => updateTodo(e.detail)}
         on:remove={e => removeTodo(e.detail)}

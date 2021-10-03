@@ -27,6 +27,8 @@
   function onCancel() {
     // restores name to its initial value
     name = todo.name 
+    start = todo.start 
+    end = todo.end 
     // and exit editing mode         
     editing = false                      
   }
@@ -59,6 +61,17 @@
 
   const focusEditButton = (node) => editButtonPressed && node.focus()
 
+  const convertTo12 = (start) => {
+    const [sHours, minutes] = start.match(/([0-9]{1,2}):([0-9]{2})/).slice(1);
+    const period = +sHours < 12 ? 'am' : 'pm';
+    const hours = +sHours % 12 || 12;
+
+    return `${hours}:${minutes} ${period}`;
+  }
+
+  let convertedStart = convertTo12(todo.start)
+  let convertedEnd = convertTo12(todo.end)
+
 </script>
 
 <div class="stack-small">
@@ -75,9 +88,10 @@
 {:else}
   <div>
     <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
-    <label for="todo-{todo.id}" >{todo.name}</label>
-    <input type="time" disabled="true" for="todo-{todo.start}" bind:value={todo.start}/>
-    <input type="time" disabled="true" for="todo-{todo.end}"  bind:value={todo.end}/>
+    <label for="todo-{todo.id}" >{todo.name}: {convertedStart} - {convertedEnd}</label>
+
+    <!-- <input type="time" disabled="true" for="todo-{todo.start}" bind:value={todo.start}/>
+    <input type="time" disabled="true" for="todo-{todo.end}"  bind:value={todo.end}/> -->
     <button type="button" on:click={onEdit} use:focusEditButton>Edit</button>
     <button type="button" on:click={onRemove}>Delete</button>
   </div>
