@@ -7,39 +7,53 @@
 
   export let todo
 
-  let editing = false                     // track editing mode
-  let editButtonPressed = false           // track if edit button has been pressed, to give focus to it after cancel or save
+  // track editing mode
+  let editing = false      
+  // track if edit button has been pressed, to give focus to it after cancel or save               
+  let editButtonPressed = false           
 
-  let name = todo.name                    // hold the name of the todo being edited
+  // hold the name of the todo being edited
+  let name = todo.name                    
   let start = todo.start  
-  let end = todo.end                  // hold the name of the todo being edited
+  // hold the name of the todo being edited
+  let end = todo.end                  
 
   function update(updatedTodo) {
-    todo = { ...todo, ...updatedTodo }    // applies modifications to todo
-    dispatch('update', todo)              // emit update event
+    // applies modifications to todo
+    todo = { ...todo, ...updatedTodo }   
+    // emit update event
+    dispatch('update', todo)              
   }
 
   function onCancel() {
-    name = todo.name                      // restores name to its initial value
-    editing = false                       // and exit editing mode
+    // restores name to its initial value
+    name = todo.name 
+    // and exit editing mode         
+    editing = false                      
   }
 
   function onSave() {
-    update({ name: name, start: start, end: end })                // updates todo name
-    editing = false                       // and exit editing mode
+    // updates todo name
+    update({ name: name, start: start, end: end })         
+    // and exit editing mode       
+    editing = false                       
   }
 
   function onRemove() {
-    dispatch('remove', todo)              // emit remove event
+    // emit remove event
+    dispatch('remove', todo)              
   }
 
   function onEdit() {
-    editButtonPressed = true              // when Cancel or Save is pressed, focus should go back to the Edit button
-    editing = true                        // enter editing mode
+    // when Cancel or Save is pressed, focus should go back to the Edit button
+    editButtonPressed = true       
+    // enter editing mode       
+    editing = true                       
   }
 
   function onToggle() {
-    update({ completed: !todo.completed}) // updates todo status
+    // updates todo status
+    update({ completed: !todo.completed}) 
   }
 
   const focusOnInit = (node) => node && typeof node.focus === 'function' && node.focus()
@@ -50,42 +64,25 @@
 
 <div class="stack-small">
 {#if editing}
-  <!-- markup for editing todo: label, input text, Cancel and Save Button -->
-  <form on:submit|preventDefault={onSave} class="stack-small" on:keydown={e => e.key === 'Escape' && onCancel()}>
-    <div class="form-group">
-      <!-- <label for="todo-{todo.id}" class="todo-label">New name for '{todo.name}'</label> -->
+  <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
+    <div>
       <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
-      <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
-      <input bind:value={end} type="time" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
+      <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off" />
+      <input bind:value={end}  type="time" id="todo-{todo.id}" autoComplete="off" />
     </div>
-    <div class="btn-group">
-      <button class="btn todo-cancel" on:click={onCancel} type="button">
-        Cancel<span class="visually-hidden"></span>
-        </button>
-      <button class="btn btn__primary todo-edit" type="submit" disabled={!name}>
-        +<span class="visually-hidden"></span>
-      </button>
+    <div>
+      <button on:click={onCancel} type="button">Cancel</button>
+      <button type="submit" disabled={!name}>+</button>
     </div>
   </form>
 {:else}
-  <!-- markup for displaying todo: checkbox, label, Edit and Delete Button -->
-  <div class="c-cb">
-    <input type="checkbox" id="todo-{todo.id}"
-      on:click={onToggle} checked={todo.completed}
-    >
-    <label for="todo-{todo.id}" class="todo-label">{todo.name}</label>
-    <!-- <label for="todo-{todo.start}" class="todo-label">{todo.start}</label> -->
-    <input type="time" disabled="true" for="todo-{todo.start}" class="todo-label" bind:value={todo.start}/>
-    <input type="time" disabled="true" for="todo-{todo.end}" class="todo-label" bind:value={todo.end}/>
-    <button type="button" class="btn" on:click={onEdit} use:focusEditButton>
-      Edit<span class="visually-hidden"></span>
-    </button>
-    <button type="button" class="btn btn__danger" on:click={onRemove}>
-      -<span class="visually-hidden"></span>
-    </button>
-  </div>
-  <div class="btn-group">
-
+  <div>
+    <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
+    <label for="todo-{todo.id}" >{todo.name}</label>
+    <input type="time" disabled="true" for="todo-{todo.start}" c bind:value={todo.start}/>
+    <input type="time" disabled="true" for="todo-{todo.end}"  bind:value={todo.end}/>
+    <button type="button" on:click={onEdit} use:focusEditButton>Edit</button>
+    <button type="button" on:click={onRemove}>-</button>
   </div>
 {/if}
 </div>
