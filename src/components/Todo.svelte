@@ -55,8 +55,8 @@
     <div class="form-group">
       <!-- <label for="todo-{todo.id}" class="todo-label">New name for '{todo.name}'</label> -->
       <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
-      <input bind:value={start} use:selectOnFocus use:focusOnInit type="time" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
-      <input bind:value={end} use:selectOnFocus use:focusOnInit type="time" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
+      <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
+      <input bind:value={end} type="time" id="todo-{todo.id}" autoComplete="off" class="todo-text" />
     </div>
     <div class="btn-group">
       <button class="btn todo-cancel" on:click={onCancel} type="button">
