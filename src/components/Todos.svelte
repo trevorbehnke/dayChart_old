@@ -41,7 +41,7 @@
 
 <!-- Todos -->
 <div class="list-container">
-  <ul role="list" aria-labelledby="list-heading">
+  <ul>
   {#each filterTodos(filter, todos) as todo}
     <li >
       <Todo {todo}
