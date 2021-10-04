@@ -34,5 +34,5 @@
     <label for="todo-0">Welcome to Day Chart!</label>
   </h2>
   <input bind:value={name} bind:this={nameEl} use:selectOnFocus type="text" id="todo-0" autoComplete="off"/>
-  <button type="submit" disabled={!name}>Add</button>
+  <button type="submit" disabled={!name}>➕</button>
 </form>
