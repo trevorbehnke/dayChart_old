@@ -13,9 +13,7 @@
   let editButtonPressed = false           
 
   // hold the name of the todo being edited
-  let name = todo.name                    
-  let start = todo.start  
-  let end = todo.end                  
+  let name = todo.name                                    
 
   function update(updatedTodo) {
     // applies modifications to todo
@@ -27,15 +25,13 @@
   function onCancel() {
     // restores name to its initial value
     name = todo.name 
-    start = todo.start 
-    end = todo.end 
     // and exit editing mode         
     editing = false                      
   }
 
   function onSave() {
     // updates todo name
-    update({ name: name, start: start, end: end })         
+    update({ name: name })         
     // and exit editing mode       
     editing = false                       
   }
@@ -61,17 +57,6 @@
 
   const focusEditButton = (node) => editButtonPressed && node.focus()
 
-  const convertTo12 = (start) => {
-    const [sHours, minutes] = start.match(/([0-9]{1,2}):([0-9]{2})/).slice(1);
-    const period = +sHours < 12 ? 'am' : 'pm';
-    const hours = +sHours % 12 || 12;
-
-    return `${hours}:${minutes} ${period}`;
-  }
-
-  let convertedStart = convertTo12(todo.start)
-  let convertedEnd = convertTo12(todo.end)
-
 </script>
 
 <div class="stack-small">
@@ -79,16 +64,14 @@
   <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
     <div>
       <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
-      <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off" />
-      <input bind:value={end}  type="time" id="todo-{todo.id}" autoComplete="off" />
       <button on:click={onCancel} type="button">Cancel</button>
-      <button type="submit" disabled={!name || !start || !end}>Add</button>
+      <button type="submit" disabled={!name}>Add</button>
     </div>
   </form>
 {:else}
   <div>
     <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
-    <label for="todo-{todo.id}" >{todo.name}: {convertedStart} - {convertedEnd}</label>
+    <label for="todo-{todo.id}" >{todo.name}</label>
 
     <!-- <input type="time" disabled="true" for="todo-{todo.start}" bind:value={todo.start}/>
     <input type="time" disabled="true" for="todo-{todo.end}"  bind:value={todo.end}/> -->

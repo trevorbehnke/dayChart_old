@@ -9,7 +9,7 @@
   $: newTodoId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1
 
   function addTodo({name, start, end}) {
-    todos = [...todos, { id: newTodoId, name, start, end, completed: false }]
+    todos = [...todos, { id: newTodoId, name, completed: false }]
   }
 
   function removeTodo(todo) {
@@ -36,7 +36,7 @@
 
 </script>
 
-<div class="todoapp stack-large">
+<div>
 
   <!-- NewTodo -->
   <NewTodo autofocus on:addTodo={e => addTodo(e.detail)} />

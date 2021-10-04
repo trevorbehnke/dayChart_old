@@ -8,16 +8,12 @@
   export let autofocus = false
 
   let name = ''
-  let start = null
-  let end = null
   // reference to the name input DOM node
   let nameEl                  
 
   const addTodo = () => {
-    dispatch('addTodo', { name, start, end})
+    dispatch('addTodo', { name })
     name = ''
-    start = null
-    end = null
     // give focus to the name input
     nameEl.focus()            
   }
@@ -38,7 +34,5 @@
     <label for="todo-0">Welcome to Day Chart!</label>
   </h2>
   <input bind:value={name} bind:this={nameEl} use:selectOnFocus type="text" id="todo-0" autoComplete="off"/>
-  <input bind:value={start} type="time" id="start-0" autoComplete="off"/>
-  <input bind:value={end} type="time" id="start-0" autoComplete="off"/>
-  <button type="submit" disabled={!name || !start || !end }>Add</button>
+  <button type="submit" disabled={!name}>Add</button>
 </form>
