@@ -42,18 +42,20 @@
   <NewTodo autofocus on:addTodo={e => addTodo(e.detail)} />
 
   <!-- Todos -->
-  <ul role="list" aria-labelledby="list-heading">
-  {#each filterTodos(filter, todos) as todo (todo.id)}
-    <li >
-      <Todo {todo}
-        on:update={e => updateTodo(e.detail)}
-        on:remove={e => removeTodo(e.detail)}
-      />
-    </li>
-  {:else}
-    <li>Nothing to do I guess 🤷‍♂️!</li>
-  {/each}
-  </ul>
+  <div class="list-container">
+    <ul role="list" aria-labelledby="list-heading">
+    {#each filterTodos(filter, todos) as todo (todo.id)}
+      <li >
+        <Todo {todo}
+          on:update={e => updateTodo(e.detail)}
+          on:remove={e => removeTodo(e.detail)}
+        />
+      </li>
+    {:else}
+      <li>Nothing to do I guess 🤷‍♂️!</li>
+    {/each}
+    </ul>
+  </div>
 
   <!-- MoreActions -->
   <MoreActions {todos}
@@ -62,3 +64,9 @@
   />
 
 </div>
+
+<style>
+  .list-container {
+    margin: 20px auto;
+  }
+</style>
