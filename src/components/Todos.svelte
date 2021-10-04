@@ -6,11 +6,13 @@
 
   export let todos = []
 
+  // Create id for new item based on length of array.
   $: newTodoId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1
 
-  // Add todo to array
-  function addTodo({name}) {
-    todos = [...todos, { id: newTodoId, name, completed: false }]
+  // Add todo to array. "name" parameter passed in from NewTodo.svelte.
+  function addTodo( name ) {
+    // Create new todo object and add it todos array.
+    todos = [...todos, { id: newTodoId, name: name, completed: false }]
   }
 
   // Remove todo from array
@@ -40,6 +42,8 @@
 </script>
 
 <!-- NewTodo -->
+<!-- Get event dispatcher from NewTodo.svelte and run addTodo function, 
+passing in the e.detail which in this case is the "name" variable -->
 <NewTodo autofocus on:addTodo={e => addTodo(e.detail)} />
 
 <!-- Todos -->

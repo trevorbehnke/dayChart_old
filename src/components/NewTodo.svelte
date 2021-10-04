@@ -14,8 +14,9 @@
   let nameEl                  
 
   const addTodo = () => {
-    // Dispatch the event. Name it "addTodo" and send {name: name} with it.
-    dispatch('addTodo', { name: name })
+    // Dispatch the event. Name it "addTodo" and send "name" variable with it.
+    dispatch('addTodo', name )
+    // Reset "name" variable to an empty string.
     name = ''
     // give focus to the name input
     nameEl.focus()            
@@ -31,7 +32,7 @@
   onMount(() => autofocus && nameEl.focus())    
 </script>
 
-<!-- Submit new todo form -->
+<!-- Submit new todo form | If escape key is pressed, input is reset via "onCancel" function-->
 <form on:submit|preventDefault={addTodo} on:keydown={e => e.key === 'Escape' && onCancel()}>
   <h2 >
     <label for="todo-0">Welcome to Day Chart!</label>
