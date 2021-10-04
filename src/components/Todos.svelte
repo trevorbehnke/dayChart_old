@@ -8,11 +8,14 @@
 
   $: newTodoId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1
 
+  // Add todo to array
   function addTodo({name}) {
     todos = [...todos, { id: newTodoId, name, completed: false }]
   }
 
+  // Remove todo from array
   function removeTodo(todo) {
+    // Loop through todos array and return new array where the new array contains items that do not match the id argument
     todos = todos.filter(t => t.id !== todo.id)
   }
 
@@ -42,16 +45,16 @@
 <!-- Todos -->
 <div class="list-container">
   <ul>
-  {#each filterTodos(filter, todos) as todo}
-    <li >
-      <Todo {todo}
-        on:update={e => updateTodo(e.detail)}
-        on:remove={e => removeTodo(e.detail)}
-      />
-    </li>
-  {:else}
-    <li>Nothing to do I guess 🤷‍♂️!</li>
-  {/each}
+    {#each filterTodos(filter, todos) as todo}
+      <li >
+        <Todo {todo}
+          on:update={e => updateTodo(e.detail)}
+          on:remove={e => removeTodo(e.detail)}
+        />
+      </li>
+    {:else}
+      <li>Nothing to do I guess 🤷‍♂️!</li>
+    {/each}
   </ul>
 </div>
 
