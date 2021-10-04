@@ -59,14 +59,14 @@
 
 </script>
 
-<div class="stack-small">
+<div>
 {#if editing}
-  <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
-    <div>
-      <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
-      <button on:click={onCancel} type="button">🛑</button>
-      <button type="submit" disabled={!name}>➕</button>
-    </div>
+<form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
+  <div>
+    <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
+    <button on:click={onCancel} type="button">🛑</button>
+    <button type="submit" disabled={!name}>➕</button>
+  </div>
   </form>
 {:else}
   <div>

@@ -8,7 +8,7 @@
 
   $: newTodoId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1
 
-  function addTodo({name, start, end}) {
+  function addTodo({name}) {
     todos = [...todos, { id: newTodoId, name, completed: false }]
   }
 
@@ -36,34 +36,30 @@
 
 </script>
 
-<div>
+<!-- NewTodo -->
+<NewTodo autofocus on:addTodo={e => addTodo(e.detail)} />
 
-  <!-- NewTodo -->
-  <NewTodo autofocus on:addTodo={e => addTodo(e.detail)} />
-
-  <!-- Todos -->
-  <div class="list-container">
-    <ul role="list" aria-labelledby="list-heading">
-    {#each filterTodos(filter, todos) as todo (todo.id)}
-      <li >
-        <Todo {todo}
-          on:update={e => updateTodo(e.detail)}
-          on:remove={e => removeTodo(e.detail)}
-        />
-      </li>
-    {:else}
-      <li>Nothing to do I guess 🤷‍♂️!</li>
-    {/each}
-    </ul>
-  </div>
-
-  <!-- MoreActions -->
-  <MoreActions {todos}
-    on:checkAll={e => checkAllTodos(e.detail)}
-    on:removeCompleted={removeCompletedTodos}
-  />
-
+<!-- Todos -->
+<div class="list-container">
+  <ul role="list" aria-labelledby="list-heading">
+  {#each filterTodos(filter, todos) as todo}
+    <li >
+      <Todo {todo}
+        on:update={e => updateTodo(e.detail)}
+        on:remove={e => removeTodo(e.detail)}
+      />
+    </li>
+  {:else}
+    <li>Nothing to do I guess 🤷‍♂️!</li>
+  {/each}
+  </ul>
 </div>
+
+<!-- MoreActions -->
+<MoreActions {todos}
+  on:checkAll={e => checkAllTodos(e.detail)}
+  on:removeCompleted={removeCompletedTodos}
+/>
 
 <style>
   .list-container {
