@@ -51,7 +51,7 @@
     <label for="todo-0">Welcome to Day Chart!</label>
   </h2>
   <!-- Bind input to "name" variable above -->
-  <input bind:value={name} bind:this={nameEl} use:selectOnFocus type="text" id="todo-0" autoComplete="off"/>
+  <input bind:value={name} bind:this={nameEl} use:selectOnFocus type="text" id="todo-0" autoComplete="off" maxlength="40"/>
   <!-- startTime input -->
   <input bind:value={start} type="time" id="todo-0" autoComplete="off"/>
   <!-- startTime input -->

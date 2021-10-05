@@ -78,7 +78,7 @@
   {#if editing}
   <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
     <div>
-      <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
+      <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off" maxlength="40"/>
       <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off"/>
       <input bind:value={end} type="time" id="todo-{todo.id}" autoComplete="off"/>
       <button on:click={onCancel} type="button">🛑</button>
