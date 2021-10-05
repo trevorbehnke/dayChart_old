@@ -38,12 +38,18 @@
     filter === 'completed' ? todos.filter(t => t.completed) : 
     todos
 
+  // Flip all todo items status. 
   const checkAllTodos = (completed) => {
-    todos = todos.map(t => ({...t, completed}))
+    // Map through each todo item, copy into a new array, and overwrite "completed" status.
+    todos = todos.map(t => ({...t, completed: completed}))
   }
+
+  // Delete all completed todos by filtering items where "completed" is false into a new array. 
   const removeCompletedTodos = () => {
     todos = todos.filter(t => !t.completed)
   }
+
+  // TODO: Toggle "Deselect All" back to "Select All" after "Delete Selected" is fired.
 
 </script>
 
@@ -70,6 +76,7 @@ passing in the e.detail which in this case is the "name" variable -->
 </div>
 
 <!-- MoreActions -->
+<!-- Passes todos array as a prop | Receives dispatch signals from "MoreActions.svelte" -->
 <MoreActions {todos}
   on:checkAll={e => checkAllTodos(e.detail)}
   on:removeCompleted={removeCompletedTodos}
