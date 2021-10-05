@@ -17,12 +17,18 @@
 
   // Remove todo from array
   function removeTodo(todo) {
-    // Loop through todos array and return new array where the new array contains items that do not match the id argument
+    // Loop through todos array and return a new array where the new array contains items 
+    // that do not match the id of the argument.
     todos = todos.filter(t => t.id !== todo.id)
   }
 
+
   function updateTodo(todo) {
+    // Loop through the todos array and find the index number where the id is exactly equal 
+    // to the id of the argument.
     const i = todos.findIndex(t => t.id === todo.id)
+    // Copy the todo with index we just found into a new object, and update the object
+    // with the todo argument we passed in.
     todos[i] = { ...todos[i], ...todo }
   }
 

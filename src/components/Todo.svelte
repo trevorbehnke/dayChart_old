@@ -7,12 +7,13 @@
 
   export let todo
 
-  // track editing mode
-  let editing = false      
+  // track editing mode to toggle todo display
+  let editing = false   
+
   // track if edit button has been pressed, to give focus to it after cancel or save               
   let editButtonPressed = false           
 
-  // hold the name of the todo being edited
+  // temporarily hold the name of the todo being edited so that onCancel functions properly
   let name = todo.name                                    
 
   function update(updatedTodo) {
@@ -55,25 +56,26 @@
 
 <!-- Individual todo object-->
 <div>
+  <!-- Show this section if "editing" variable is true.  -->
+  {#if editing}
+  <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
+    <div>
+      <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
+      <button on:click={onCancel} type="button">🛑</button>
+      <button type="submit" disabled={!name}>➕</button>
+    </div>
+    </form>
 
-<!-- Show this section if "editing" variable is true.  -->
-{#if editing}
-<form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
-  <div>
-    <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
-    <button on:click={onCancel} type="button">🛑</button>
-    <button type="submit" disabled={!name}>➕</button>
-  </div>
-  </form>
-
-<!-- Show this section is "editing" variable is false. -->
-{:else}
-  <div>
-    <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
-    <label for="todo-{todo.id}" >{todo.name}</label>
-    <button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
-    <!-- Emit the dispatch event and send the todo prop back up to the parent -->
-    <button type="button" on:click="{() => dispatch('remove', todo)}">🗑</button>
-  </div>
-{/if}
+  <!-- Show this section is "editing" variable is false. -->
+  {:else}
+    <div>
+      <!-- Toggle the completed state -->
+      <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
+      <!-- Display todo name for corresponding id -->
+      <label for="todo-{todo.id}" >{todo.name}</label>
+      <button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
+      <!-- Emit the dispatch event and send the todo prop back up to the parent -->
+      <button type="button" on:click="{() => dispatch('remove', todo)}">🗑</button>
+    </div>
+  {/if}
 </div>
