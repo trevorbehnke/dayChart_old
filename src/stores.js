@@ -23,10 +23,10 @@ export const localStore = (key, initial) => {
 };
 
 const initial = [
-  { id: 1, name: "Eat", completed: false },
-  { id: 2, name: "Sleep", completed: false },
-  { id: 3, name: "Code", completed: false },
-  { id: 4, name: "Repeat", completed: false },
+  { id: 1, name: "Eat", start: "10:00", end: "11:00", completed: false },
+  { id: 2, name: "Sleep", start: "11:00", end: "12:00", completed: false },
+  { id: 3, name: "Code", start: "12:00", end: "13:00", completed: false },
+  { id: 4, name: "Repeat", start: "13:00", end: "14:00", completed: false },
 ];
 
 export const todos = localStore("data", initial);

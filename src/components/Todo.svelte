@@ -16,6 +16,12 @@
   // temporarily hold the name of the todo being edited so that onCancel functions properly
   let name = todo.name                                    
 
+  // temporarily hold the start of the todo being edited so that onCancel functions properly
+  let start = todo.start                                    
+
+  // temporarily hold the start of the todo being edited so that onCancel functions properly
+  let end = todo.end                                    
+
   function update(updatedTodo) {
     // applies modifications to todo
     todo = { ...todo, ...updatedTodo }   
@@ -26,13 +32,17 @@
   function onCancel() {
     // restores name to its initial value
     name = todo.name 
+    // restores name to its initial value
+    start = todo.start 
+    // restores name to its initial value
+    end = todo.end 
     // and exit editing mode         
     editing = false                      
   }
 
   function onSave() {
     // updates todo name
-    update({ name: name })         
+    update({ name: name, start: start, end: end })         
     // and exit editing mode       
     editing = false                       
   }
@@ -61,6 +71,8 @@
   <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
     <div>
       <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
+      <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off"/>
+      <input bind:value={end} type="time" id="todo-{todo.id}" autoComplete="off"/>
       <button on:click={onCancel} type="button">🛑</button>
       <button type="submit" disabled={!name}>➕</button>
     </div>
@@ -72,7 +84,7 @@
       <!-- Toggle the completed state -->
       <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
       <!-- Display todo name for corresponding id -->
-      <label for="todo-{todo.id}" >{todo.name}</label>
+      <label for="todo-{todo.id}" >{todo.name}: {todo.start} - {todo.end}</label>
       <button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
       <!-- Emit the dispatch event and send the todo prop back up to the parent -->
       <button type="button" on:click="{() => dispatch('remove', todo)}">🗑</button>

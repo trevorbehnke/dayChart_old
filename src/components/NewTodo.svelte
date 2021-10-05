@@ -10,20 +10,33 @@
   // Initialize "name" variable. This is bound to the input below. Value gets passed to addTodo function below.
   let name = ''
 
+  // Initialize "name" variable. This is bound to the input below. Value gets passed to addTodo function below.
+  let start = null
+
+  // Initialize "name" variable. This is bound to the input below. Value gets passed to addTodo function below.
+  let end = null
+
   // reference to the name input DOM node
   let nameEl                  
 
   const addTodo = () => {
+    let newInfo = {name, start, end}
     // Dispatch the event. Name it "addTodo" and send "name" variable with it.
-    dispatch('addTodo', name )
+    dispatch('addTodo', newInfo )
     // Reset "name" variable to an empty string.
     name = ''
+    // Reset "name" variable to an empty string.
+    start = null
+    // Reset "name" variable to an empty string.
+    end = null
     // give focus to the name input
     nameEl.focus()            
   }
 
   const onCancel = () => {
     name = ''
+    start = null
+    end = null
     // give focus to the name input
     nameEl.focus()            
   }
@@ -39,5 +52,9 @@
   </h2>
   <!-- Bind input to "name" variable above -->
   <input bind:value={name} bind:this={nameEl} use:selectOnFocus type="text" id="todo-0" autoComplete="off"/>
+  <!-- startTime input -->
+  <input bind:value={start} type="time" id="todo-0" autoComplete="off"/>
+  <!-- startTime input -->
+  <input bind:value={end} type="time" id="todo-0" autoComplete="off"/>
   <button type="submit" disabled={!name}>➕</button>
 </form>

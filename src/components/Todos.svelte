@@ -10,9 +10,9 @@
   $: newTodoId = todos.length > 0 ? Math.max(...todos.map(t => t.id)) + 1 : 1
 
   // Add todo to array. "name" parameter passed in from NewTodo.svelte.
-  function addTodo( name ) {
+  function addTodo( {name, start, end} ) {
     // Create new todo object and add it todos array.
-    todos = [...todos, { id: newTodoId, name: name, completed: false }]
+    todos = [...todos, { id: newTodoId, name, start, end, completed: false }]
   }
 
   // Remove todo from array
