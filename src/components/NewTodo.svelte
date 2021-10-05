@@ -56,5 +56,5 @@
   <input bind:value={start} type="time" id="todo-0" autoComplete="off"/>
   <!-- startTime input -->
   <input bind:value={end} type="time" id="todo-0" autoComplete="off"/>
-  <button type="submit" disabled={!name}>➕</button>
+  <button type="submit" disabled={!name || !start || !end}>➕</button>
 </form>
