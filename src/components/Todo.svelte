@@ -13,7 +13,7 @@
   let editButtonPressed = false           
 
   // hold the name of the todo being edited
-  let name = todo.name                                    
+  // let name = todo.name                                    
 
   function update(updatedTodo) {
     // applies modifications to todo
@@ -31,15 +31,9 @@
 
   function onSave() {
     // updates todo name
-    update({ name: name })         
+    update({ name: todo.name })         
     // and exit editing mode       
     editing = false                       
-  }
-
-  // function to fire event dispatcher
-  function onRemove() {
-    // emit remove event | We named it "remove" and dispatch the "todo" prop from above.
-    dispatch('remove', todo)              
   }
 
   function onEdit() {
@@ -66,9 +60,9 @@
 {#if editing}
 <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
   <div>
-    <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
+    <input bind:value={todo.name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
     <button on:click={onCancel} type="button">🛑</button>
-    <button type="submit" disabled={!name}>➕</button>
+    <button type="submit" disabled={!todo.name}>➕</button>
   </div>
   </form>
 
@@ -78,8 +72,8 @@
     <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
     <label for="todo-{todo.id}" >{todo.name}</label>
     <button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
-    <!-- Call the onRemove function to delete object -->
-    <button type="button" on:click={() => dispatch('remove', todo)}>🗑</button>
+    <!-- Emit the dispatch event and send the todo prop back up to the parent -->
+    <button type="button" on:click="{() => dispatch('remove', todo)}">🗑</button>
   </div>
 {/if}
 </div>
