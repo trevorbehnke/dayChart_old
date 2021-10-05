@@ -5,5 +5,5 @@
   import { todos } from './stores.js'
 </script>
 
-<!-- Pass the store array as a prop to Todos.svelte & listen to changes with "$"-->
+<!-- Pass the writable store as a prop to Todos.svelte & listen to changes with "$"-->
 <Todos bind:todos={$todos} />
