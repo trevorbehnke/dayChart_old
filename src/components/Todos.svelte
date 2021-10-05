@@ -51,6 +51,7 @@ passing in the e.detail which in this case is the "name" variable -->
   <ul>
     {#each filterTodos(filter, todos) as todo}
       <li >
+        <!-- Pass each todo as a prop to Todo.svelte -->
         <Todo {todo}
           on:update={e => updateTodo(e.detail)}
           on:remove={e => removeTodo(e.detail)}

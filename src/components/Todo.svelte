@@ -36,8 +36,9 @@
     editing = false                       
   }
 
+  // function to fire event dispatcher
   function onRemove() {
-    // emit remove event
+    // emit remove event | We named it "remove" and dispatch the "todo" prop from above.
     dispatch('remove', todo)              
   }
 
@@ -56,10 +57,12 @@
   const focusOnInit = (node) => node && typeof node.focus === 'function' && node.focus()
 
   const focusEditButton = (node) => editButtonPressed && node.focus()
-
 </script>
 
+<!-- Individual todo object-->
 <div>
+
+<!-- Show this section if "editing" variable is true.  -->
 {#if editing}
 <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
   <div>
@@ -68,12 +71,15 @@
     <button type="submit" disabled={!name}>➕</button>
   </div>
   </form>
+
+<!-- Show this section is "editing" variable is false. -->
 {:else}
   <div>
     <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
     <label for="todo-{todo.id}" >{todo.name}</label>
     <button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
-    <button type="button" on:click={onRemove}>🗑</button>
+    <!-- Call the onRemove function to delete object -->
+    <button type="button" on:click={() => dispatch('remove', todo)}>🗑</button>
   </div>
 {/if}
 </div>
