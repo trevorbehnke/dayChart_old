@@ -11,7 +11,7 @@
     completed = !completed
   }
 
-  // Listens to array to find out if there are any "completed" items and enables or disables the "Delete Selected" button accordingly...
+  // Listens to array to find out if there are any "completed" items and enables or disables the "Delete Selected" button accordingly.
   $: completedTodos = todos.filter(t => t.completed).length
 </script>
 
