@@ -82,7 +82,7 @@
       <input bind:value={start} type="time" id="todo-{todo.id}" autoComplete="off"/>
       <input bind:value={end} type="time" id="todo-{todo.id}" autoComplete="off"/>
       <button on:click={onCancel} type="button">🛑</button>
-      <button type="submit" disabled={!name}>➕</button>
+      <button type="submit" disabled={!name || !start || !end}>➕</button>
     </div>
     </form>
 
