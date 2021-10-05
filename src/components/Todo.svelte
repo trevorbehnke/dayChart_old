@@ -7,6 +7,14 @@
 
   export let todo
 
+  let convertFrom24To12Format = (time24) => {
+    const [sHours, minutes] = time24.match(/([0-9]{1,2}):([0-9]{2})/).slice(1);
+    const period = +sHours < 12 ? 'AM' : 'PM';
+    const hours = +sHours % 12 || 12;
+
+    return `${hours}:${minutes} ${period}`;
+  }
+
   // track editing mode to toggle todo display
   let editing = false   
 
@@ -42,7 +50,7 @@
 
   function onSave() {
     // updates todo name
-    update({ name: name, start: start, end: end })         
+    update({ name: name, start: start, end: end })      
     // and exit editing mode       
     editing = false                       
   }
@@ -84,7 +92,7 @@
       <!-- Toggle the completed state -->
       <input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed}>
       <!-- Display todo name for corresponding id -->
-      <label for="todo-{todo.id}" >{todo.name}: {todo.start} - {todo.end}</label>
+      <label for="todo-{todo.id}" >{todo.name}: {convertFrom24To12Format(start)} - {convertFrom24To12Format(end)}</label>
       <button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
       <!-- Emit the dispatch event and send the todo prop back up to the parent -->
       <button type="button" on:click="{() => dispatch('remove', todo)}">🗑</button>
