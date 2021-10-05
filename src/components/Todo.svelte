@@ -13,7 +13,7 @@
   let editButtonPressed = false           
 
   // hold the name of the todo being edited
-  // let name = todo.name                                    
+  let name = todo.name                                    
 
   function update(updatedTodo) {
     // applies modifications to todo
@@ -31,7 +31,7 @@
 
   function onSave() {
     // updates todo name
-    update({ name: todo.name })         
+    update({ name: name })         
     // and exit editing mode       
     editing = false                       
   }
@@ -60,9 +60,9 @@
 {#if editing}
 <form on:submit|preventDefault={onSave} on:keydown={e => e.key === 'Escape' && onCancel()}>
   <div>
-    <input bind:value={todo.name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
+    <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="todo-{todo.id}" autoComplete="off"/>
     <button on:click={onCancel} type="button">🛑</button>
-    <button type="submit" disabled={!todo.name}>➕</button>
+    <button type="submit" disabled={!name}>➕</button>
   </div>
   </form>
 
