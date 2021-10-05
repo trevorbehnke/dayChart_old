@@ -32,12 +32,6 @@
     todos[i] = { ...todos[i], ...todo }
   }
 
-  let filter = 'all'
-  const filterTodos = (filter, todos) => 
-    filter === 'active' ? todos.filter(t => !t.completed) :
-    filter === 'completed' ? todos.filter(t => t.completed) : 
-    todos
-
   // Flip all todo items status. 
   const checkAllTodos = (completed) => {
     // Map through each todo item, copy into a new array, and overwrite "completed" status.
@@ -61,7 +55,7 @@ passing in the e.detail which in this case is the "name" variable -->
 <!-- Todos -->
 <div class="list-container">
   <ul>
-    {#each filterTodos(filter, todos) as todo}
+    {#each todos as todo}
       <li >
         <!-- Pass each todo as a prop to Todo.svelte | Receive two event dispatchers from Todo.svelte-->
         <Todo {todo}
