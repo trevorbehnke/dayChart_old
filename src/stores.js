@@ -16,6 +16,9 @@ export const localStore = (key, initial) => {
     subscribe,
     set: (value) => {
       localStorage.setItem(key, toString(value));
+      value.sort((a, b) =>
+        a.start > b.start ? 1 : b.start > a.start ? -1 : 0
+      );
       return set(value);
     },
     update,
@@ -23,10 +26,10 @@ export const localStore = (key, initial) => {
 };
 
 const initial = [
-  { id: 1, name: "Eat", start: "10:00", end: "11:00", completed: false },
+  { id: 1, name: "Repeat", start: "13:00", end: "14:00", completed: false },
   { id: 2, name: "Sleep", start: "11:00", end: "12:00", completed: false },
   { id: 3, name: "Code", start: "12:00", end: "13:00", completed: false },
-  { id: 4, name: "Repeat", start: "13:00", end: "14:00", completed: false },
+  { id: 4, name: "Eat", start: "10:00", end: "11:00", completed: false },
 ];
 
 export const todos = localStore("data", initial);
