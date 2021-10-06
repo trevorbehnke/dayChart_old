@@ -55,7 +55,7 @@ passing in the e.detail which in this case is the "name" variable -->
 <!-- Todos -->
 <div class="list-container">
   <ul>
-    {#each todos as todo}
+    {#each todos as todo (todo.id)}
       <li >
         <!-- Pass each todo as a prop to Todo.svelte | Receive two event dispatchers from Todo.svelte-->
         <Todo {todo}
