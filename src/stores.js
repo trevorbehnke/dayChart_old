@@ -15,10 +15,10 @@ export const localStore = (key, initial) => {
   return {
     subscribe,
     set: (value) => {
-      localStorage.setItem(key, toString(value));
       value.sort((a, b) =>
         a.start > b.start ? 1 : b.start > a.start ? -1 : 0
       );
+      localStorage.setItem(key, toString(value));
       return set(value);
     },
     update,
