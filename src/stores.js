@@ -26,10 +26,38 @@ export const localStore = (key, initial) => {
 };
 
 const initial = [
-  { id: 1, name: "Repeat", start: "13:00", end: "14:00", completed: false },
-  { id: 2, name: "Sleep", start: "11:00", end: "12:00", completed: false },
-  { id: 3, name: "Code", start: "12:00", end: "13:00", completed: false },
-  { id: 4, name: "Eat", start: "10:00", end: "11:00", completed: false },
+  {
+    id: 1,
+    name: "Eat",
+    start: "06:00",
+    end: "07:00",
+    color: "red",
+    completed: false,
+  },
+  {
+    id: 2,
+    name: "Code",
+    start: "09:00",
+    end: "12:00",
+    color: "blue",
+    completed: false,
+  },
+  {
+    id: 3,
+    name: "Sleep",
+    start: "15:00",
+    end: "17:00",
+    color: "green",
+    completed: false,
+  },
+  {
+    id: 4,
+    name: "Repeat",
+    start: "20:00",
+    end: "00:00",
+    color: "orange",
+    completed: false,
+  },
 ];
 
 export const todos = localStore("data", initial);
