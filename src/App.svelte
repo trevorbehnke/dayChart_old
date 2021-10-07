@@ -9,8 +9,7 @@
   let canvas;
 
   onMount(() => {
-    const ctx = canvas.getContext('2d');
-
+    const ctx = canvas.getContext("2d");
     // Total minutes in 1 day
     const TOTAL_MIN = 1440;
 
@@ -32,12 +31,11 @@
     // Function to create arc on canvas
     const createArc = (start, end, color) => {
       ctx.beginPath();
-      ctx.arc(250, 250, 200, start, end);
+      ctx.arc(200, 200, 150, start, end);
       ctx.strokeStyle = color;
       ctx.lineWidth = 30;
       ctx.stroke();
     };
-
     $todos.forEach(({ start, end, color }) => {
     convert(start, end, color);
       });
@@ -50,8 +48,8 @@
 
 <canvas
   bind:this={canvas}
-  width="500"
-  height="500"
+  width="400"
+  height="400"
 ></canvas>
 
 <style>
