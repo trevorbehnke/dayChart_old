@@ -6,7 +6,8 @@
   import Chart from "./chart.svelte"
 </script>
 
-<!-- Pass the writable store as a prop to Todos.svelte & listen to changes with "$"-->
+<!-- Two-way binding of the writable store with Todos.svelte"-->
 <Todos bind:todos={$todos} />
 
-<Chart bind:todos={$todos}/>
+<!-- Pass the writable store to Chart as a prop -->
+<Chart todos={$todos}/>

@@ -37,7 +37,8 @@
   };
 
   afterUpdate(() => {
-    if(theChart){theChart.destroy()};
+    let ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, 400, 400);
     todos.forEach(({ start, end, color }) => {
     create(start, end, color);
       });
