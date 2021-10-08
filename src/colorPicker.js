@@ -1,11 +1,11 @@
-const data = [
+let data = [
   { color: "red" },
   { color: "blue" },
   { color: "green" },
   { color: "orange" },
 ];
 
-const colors = [
+let colors = [
   "yellow",
   "purple",
   "pink",

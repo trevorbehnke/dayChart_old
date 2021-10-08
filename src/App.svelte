@@ -6,8 +6,22 @@
   import Chart from "./chart.svelte"
 </script>
 
-<!-- Two-way binding of the writable store with Todos.svelte"-->
-<Todos bind:todos={$todos} />
+<div class="container">
+  <!-- Two-way binding of the writable store with Todos.svelte"-->
+  <div>
+    <Todos bind:todos={$todos} />
+  </div>
+  
+  <div>
+    <Chart todos={$todos}/>
+  </div>
+  <!-- Pass the writable store to Chart as a prop -->
+</div>
 
-<!-- Pass the writable store to Chart as a prop -->
-<Chart todos={$todos}/>
+<style>
+ .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+</style>

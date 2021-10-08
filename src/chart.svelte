@@ -1,9 +1,11 @@
-<canvas
-  bind:this={canvas}
-  id="myChart"
-  width="400"
-  height="400"
-></canvas>
+<div>
+  <canvas
+    bind:this={canvas}
+    id="myChart"
+    width="400"
+    height="400"
+  ></canvas>
+</div>
 
 <script>
   import { afterUpdate } from 'svelte';
@@ -47,7 +49,6 @@
 
 <style>
 	canvas {
-    border: 1px solid #d3d3d3;
     transform: rotate(90deg);
 	}
 </style>
