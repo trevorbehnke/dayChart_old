@@ -4,6 +4,7 @@
   // Get todos array from store
   import { todos } from './stores.js'
   import Chart from "./chart.svelte"
+  import Clock from "./clock.svelte"
 </script>
 
 <div class="container">
@@ -13,9 +14,13 @@
   </div>
   
   <div>
+      <!-- Pass the writable store to Chart as a prop -->
     <Chart todos={$todos}/>
+    <Clock/>
   </div>
-  <!-- Pass the writable store to Chart as a prop -->
+
+    
+
 </div>
 
 <style>
