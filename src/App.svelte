@@ -15,7 +15,7 @@
   
   <div>
       <!-- Pass the writable store to Chart as a prop -->
-    <Chart todos={$todos}/>
+    <!-- <Chart todos={$todos}/> -->
     <Clock/>
   </div>
 
