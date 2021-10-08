@@ -99,3 +99,12 @@
     </div>
   {/if}
 </div>
+
+<style>
+  label {
+    display: inline-block;
+    /* margin-right: 10px; */
+    /* text-align: right; */
+    width: 310px;
+  }
+</style>
