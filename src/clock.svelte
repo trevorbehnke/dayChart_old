@@ -25,12 +25,12 @@
 	<circle class='clock-face' r='48'/>
 
 	<!-- markers -->
-	{#each [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] as hour}
+	{#each [0, 1, 2, 3, 4] as hour}
 		<line
 			class='major'
 			y1='35'
 			y2='45'
-			transform='rotate({15 * hour})'
+			transform='rotate({90 * hour})'
 		/>
 
 		<!-- {#each [1, 2, 3, 4] as offset}
@@ -61,7 +61,7 @@
 
 	<!-- second hand -->
 	<g transform='rotate({15 * hours + minutes / 4})'>
-		<line class='second' y1='10' y2='-38'/>
+		<line class='second' y1='10' y2='-58'/>
 		<line class='second-counterweight' y1='10' y2='2'/>
 	</g>
 </svg>
