@@ -2,12 +2,13 @@
 	import { onMount } from 'svelte';
 
 	let time = new Date();
+	console.log(`The current time is: ${time}`);
 
 	// these automatically update when `time`
 	// changes, because of the `$:` prefix
 	$: hours = time.getHours();
 	$: minutes = time.getMinutes();
-	$: seconds = time.getSeconds();
+	// $: seconds = time.getSeconds();
 
 	onMount(() => {
 		const interval = setInterval(() => {
@@ -24,42 +25,42 @@
 	<circle class='clock-face' r='48'/>
 
 	<!-- markers -->
-	{#each [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55] as minute}
+	{#each [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] as hour}
 		<line
 			class='major'
 			y1='35'
 			y2='45'
-			transform='rotate({30 * minute})'
+			transform='rotate({15 * hour})'
 		/>
 
-		{#each [1, 2, 3, 4] as offset}
+		<!-- {#each [1, 2, 3, 4] as offset}
 			<line
 				class='minor'
 				y1='42'
 				y2='45'
 				transform='rotate({6 * (minute + offset)})'
 			/>
-		{/each}
+		{/each} -->
 	{/each}
 
 	<!-- hour hand -->
-	<line
+	<!-- <line
 		class='hour'
 		y1='2'
 		y2='-20'
-		transform='rotate({30 * hours + minutes / 2})'
-	/>
+		transform='rotate({15 * hours + minutes / 2})'
+	/> -->
 
 	<!-- minute hand -->
-	<line
+	<!-- <line
 		class='minute'
 		y1='4'
 		y2='-30'
 		transform='rotate({6 * minutes + seconds / 10})'
-	/>
+	/> -->
 
 	<!-- second hand -->
-	<g transform='rotate({6 * seconds})'>
+	<g transform='rotate({15 * hours + minutes / 4})'>
 		<line class='second' y1='10' y2='-38'/>
 		<line class='second-counterweight' y1='10' y2='2'/>
 	</g>
@@ -69,6 +70,8 @@
 	svg {
 		width: 100%;
 		height: 100%;
+		transform: rotate(180deg);
+
 	}
 
 	.clock-face {
@@ -76,23 +79,23 @@
 		fill: white;
 	}
 
-	.minor {
+	/* .minor {
 		stroke: #999;
 		stroke-width: 0.5;
-	}
+	} */
 
 	.major {
 		stroke: #333;
 		stroke-width: 1;
 	}
 
-	.hour {
+	/* .hour {
 		stroke: #333;
-	}
+	} */
 
-	.minute {
+	/* .minute {
 		stroke: #666;
-	}
+	} */
 
 	.second, .second-counterweight {
 		stroke: rgb(180,0,0);

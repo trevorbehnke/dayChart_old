@@ -1,10 +1,8 @@
 <!-- App.svelte -->
 <script>
   import Todos from './components/Todos.svelte'
-  // Get todos array from store
   import { todos } from './stores.js'
-  import Chart from "./chart.svelte"
-  import Clock from "./clock.svelte"
+  import Graphic from './graphic.svelte';
 </script>
 
 <div class="container">
@@ -12,15 +10,8 @@
   <div>
     <Todos bind:todos={$todos} />
   </div>
-  
-  <div>
-      <!-- Pass the writable store to Chart as a prop -->
-    <Chart todos={$todos}/>
-    <Clock/>
-  </div>
 
-    
-
+  <Graphic/>
 </div>
 
 <style>
