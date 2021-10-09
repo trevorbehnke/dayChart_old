@@ -5,19 +5,20 @@
   import Graphic from './graphic.svelte';
 </script>
 
-<div class="container">
+<div class="flex justify-around">
   <!-- Two-way binding of the writable store with Todos.svelte"-->
   <div>
     <Todos bind:todos={$todos} />
   </div>
-
-  <Graphic/>
+  <div>
+    <Graphic/>
+  </div>
 </div>
 
 <style>
- .container {
+ /* .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
-}
+} */
 </style>
