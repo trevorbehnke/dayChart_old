@@ -1,16 +1,20 @@
 <script>
   import Chart from "./chart.svelte"
   import Clock from "./clock.svelte"
+  import Progress from "./Progress.svelte";
   import { todos } from './stores.js'
 </script>
 
 <div class=container>
-  <div class="inner">
-    <Chart todos={$todos}/>
+  <div class="inner" style="z-index:1">
+    <Chart todos={$todos} />
   </div>
-  <div class="inner">
+  <div class="inner" style="z-index:2">
     <Clock/>
   </div>
+  <!-- <div class="inner" style="z-index:3">
+    <Progress/>
+  </div> -->
 </div>
 
 <style>
