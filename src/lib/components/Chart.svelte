@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
 	import { afterUpdate } from 'svelte';
 	export let todos = [];
 	let canvas;
@@ -39,4 +39,4 @@
 	canvas {
 		transform: rotate(90deg);
 	}
-</style> -->
+</style>

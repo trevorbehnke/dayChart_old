@@ -1,6 +1,6 @@
 <script>
-	import Chart from './chart.svelte';
-	import Clock from './clock.svelte';
+	import Chart from './Chart.svelte';
+	import Clock from './Clock.svelte';
 	import Progress from './Progress.svelte';
 	import { todos } from '../../stores';
 </script>
