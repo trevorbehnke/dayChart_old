@@ -1,37 +1,28 @@
 <script>
 	import { onMount } from 'svelte';
-
 	let time = new Date();
 	console.log(`The current time is: ${time}`);
-
 	// these automatically update when `time`
 	// changes, because of the `$:` prefix
 	$: hours = time.getHours();
 	$: minutes = time.getMinutes();
 	// $: seconds = time.getSeconds();
-
 	onMount(() => {
 		const interval = setInterval(() => {
 			time = new Date();
 		}, 1000);
-
 		return () => {
 			clearInterval(interval);
 		};
 	});
 </script>
 
-<svg viewBox='-50 -50 100 100'>
-	<circle class='clock-face' r='48'/>
+<svg viewBox="-50 -50 100 100">
+	<circle class="clock-face" r="48" />
 
 	<!-- markers -->
 	{#each [0, 1, 2, 3, 4] as hour}
-		<line
-			class='major'
-			y1='35'
-			y2='45'
-			transform='rotate({90 * hour})'
-		/>
+		<line class="major" y1="35" y2="45" transform="rotate({90 * hour})" />
 
 		<!-- {#each [1, 2, 3, 4] as offset}
 			<line
@@ -60,9 +51,9 @@
 	/> -->
 
 	<!-- second hand -->
-	<g transform='rotate({15 * hours + minutes / 4})'>
-		<line class='second' y1='10' y2='-58'/>
-		<line class='second-counterweight' y1='10' y2='2'/>
+	<g transform="rotate({15 * hours + minutes / 4})">
+		<line class="second" y1="10" y2="-58" />
+		<line class="second-counterweight" y1="10" y2="2" />
 	</g>
 </svg>
 
@@ -71,36 +62,29 @@
 		width: 100%;
 		height: 100%;
 		transform: rotate(180deg);
-
 	}
-
 	.clock-face {
 		stroke: #333;
 		fill: white;
 	}
-
 	/* .minor {
 		stroke: #999;
 		stroke-width: 0.5;
 	} */
-
 	.major {
 		stroke: #333;
 		stroke-width: 1;
 	}
-
 	/* .hour {
 		stroke: #333;
 	} */
-
 	/* .minute {
 		stroke: #666;
 	} */
-
-	.second, .second-counterweight {
-		stroke: rgb(180,0,0);
+	.second,
+	.second-counterweight {
+		stroke: rgb(180, 0, 0);
 	}
-
 	.second-counterweight {
 		stroke-width: 3;
 	}
