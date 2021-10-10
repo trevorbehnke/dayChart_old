@@ -42,7 +42,7 @@ passing in the e.detail which in this case is the "name" variable -->
 <NewTodo autofocus on:addTodo={(e) => addTodo(e.detail)} />
 
 <!-- Todos -->
-<div class="list-container">
+<div class=" bg-green-200">
 	<ul>
 		{#each todos as todo (todo.id)}
 			<li>
@@ -68,7 +68,4 @@ passing in the e.detail which in this case is the "name" variable -->
 />
 
 <style>
-	.list-container {
-		margin: 20px auto;
-	}
 </style>

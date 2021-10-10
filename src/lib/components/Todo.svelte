@@ -79,25 +79,36 @@
 
 		<!-- Show this section is "editing" variable is false. -->
 	{:else}
-		<div>
+		<div class="w-full flex">
 			<!-- Toggle the completed state -->
-			<input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed} />
+			<div class=" w-1/12">
+				<input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed} />
+			</div>
 			<!-- Display todo name for corresponding id -->
-			<label for="todo-{todo.id}"
-				>{todo.name}: {convertFrom24To12Format(start)} - {convertFrom24To12Format(end)}</label
-			>
-			<button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
+			<div class=" w-4/12">
+				<label for="todo-{todo.id}">{todo.name}</label>
+			</div>
+			<div class=" w-5/12">
+				<label for="todo-{todo.id}"
+					>{convertFrom24To12Format(start)} - {convertFrom24To12Format(end)}</label
+				>
+			</div>
+			<div class=" w-1/12 text-right">
+				<button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
+			</div>
 			<!-- Emit the dispatch event and send the todo prop back up to the parent -->
-			<button type="button" on:click={() => dispatch('remove', todo)}>🗑</button>
+			<div class=" w-1/12 text-right">
+				<button type="button" on:click={() => dispatch('remove', todo)}>🗑</button>
+			</div>
 		</div>
 	{/if}
 </div>
 
 <style>
-	label {
-		display: inline-block;
-		/* margin-right: 10px; */
-		/* text-align: right; */
-		width: 310px;
-	}
+	/* label { */
+	/* display: inline-block; */
+	/* margin-right: 10px; */
+	/* text-align: right; */
+	/* width: 310px; */
+	/* } */
 </style>
