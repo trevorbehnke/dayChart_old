@@ -88,10 +88,14 @@
 			<div class=" w-4/12">
 				<label for="todo-{todo.id}">{todo.name}</label>
 			</div>
-			<div class=" w-5/12">
-				<label for="todo-{todo.id}"
-					>{convertFrom24To12Format(start)} - {convertFrom24To12Format(end)}</label
-				>
+			<div class=" w-2/12 text-right">
+				<label for="todo-{todo.id}">{convertFrom24To12Format(start)}</label>
+			</div>
+			<div class=" w-1/12 text-center">
+				<label for="todo-{todo.id}"> - </label>
+			</div>
+			<div class=" w-2/12 text-right">
+				<label for="todo-{todo.id}">{convertFrom24To12Format(end)}</label>
 			</div>
 			<div class=" w-1/12 text-right">
 				<button type="button" on:click={onEdit} use:focusEditButton>✏️</button>
