@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	let time = new Date();
-	console.log(`The current time is: ${time}`);
+	// console.log(`The current time is: ${time}`);
 	// these automatically update when `time`
 	// changes, because of the `$:` prefix
 	$: hours = time.getHours();
@@ -21,18 +21,18 @@
 	<circle class="clock-face" r="48" />
 
 	<!-- markers -->
-	{#each [0, 1, 2, 3, 4] as hour}
+	<!-- {#each [0, 1, 2, 3, 4] as hour}
 		<line class="major" y1="35" y2="45" transform="rotate({90 * hour})" />
 
-		<!-- {#each [1, 2, 3, 4] as offset}
+		{#each [1, 2, 3, 4] as offset}
 			<line
 				class='minor'
 				y1='42'
 				y2='45'
 				transform='rotate({6 * (minute + offset)})'
 			/>
-		{/each} -->
-	{/each}
+		{/each}
+	{/each} -->
 
 	<!-- hour hand -->
 	<!-- <line
@@ -71,10 +71,10 @@
 		stroke: #999;
 		stroke-width: 0.5;
 	} */
-	.major {
+	/* .major {
 		stroke: #333;
 		stroke-width: 1;
-	}
+	} */
 	/* .hour {
 		stroke: #333;
 	} */
