@@ -85,16 +85,16 @@
 				<input type="checkbox" id="todo-{todo.id}" on:click={onToggle} checked={todo.completed} />
 			</div>
 			<!-- Display todo name for corresponding id -->
-			<div class=" w-4/12">
+			<div class=" w-2/12">
 				<label for="todo-{todo.id}">{todo.name}</label>
 			</div>
-			<div class=" w-2/12 text-right">
+			<div class=" w-3/12 text-right">
 				<label for="todo-{todo.id}">{convertFrom24To12Format(start)}</label>
 			</div>
 			<div class=" w-1/12 text-center">
 				<label for="todo-{todo.id}"> - </label>
 			</div>
-			<div class=" w-2/12 text-right">
+			<div class=" w-3/12 text-right">
 				<label for="todo-{todo.id}">{convertFrom24To12Format(end)}</label>
 			</div>
 			<div class=" w-1/12 text-right">

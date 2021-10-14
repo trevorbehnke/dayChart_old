@@ -38,23 +38,31 @@
 <!-- Submit new todo form | If escape key is pressed, input is reset via "onCancel" function-->
 <div>
 	<form on:submit|preventDefault={addTodo} on:keydown={(e) => e.key === 'Escape' && onCancel()}>
-		<h2>
+		<!-- <h2>
 			<label for="todo-0">Welcome to Day Chart!</label>
-		</h2>
+		</h2> -->
 		<!-- Bind input to "name" variable above -->
-		<input
-			bind:value={name}
-			bind:this={nameEl}
-			use:selectOnFocus
-			type="text"
-			id="todo-0"
-			autoComplete="off"
-			maxlength="40"
-		/>
-		<!-- startTime input -->
-		<input bind:value={start} type="time" id="todo-0" autoComplete="off" />
-		<!-- startTime input -->
-		<input bind:value={end} type="time" id="todo-0" autoComplete="off" />
-		<button type="submit" disabled={!name || !start || !end}>➕</button>
+		<div>
+			<input
+				bind:value={name}
+				bind:this={nameEl}
+				use:selectOnFocus
+				placeholder="Add Item Here..."
+				type="text"
+				id="todo-0"
+				autoComplete="off"
+				maxlength="40"
+				class=" min-w-full mb-4"
+			/>
+		</div>
+		<div class="flex justify-around mb-6">
+			<p>Start: &nbsp;</p>
+			<!-- startTime input -->
+			<input bind:value={start} type="time" id="todo-0" autoComplete="off" />
+			<p>&nbsp; End: &nbsp;</p>
+			<!-- startTime input -->
+			<input bind:value={end} type="time" id="todo-0" autoComplete="off" />
+			<button class="mx-2" type="submit" disabled={!name || !start || !end}>➕</button>
+		</div>
 	</form>
 </div>
