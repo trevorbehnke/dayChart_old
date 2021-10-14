@@ -1,20 +1,25 @@
 <script>
 	import Chart from './Chart.svelte';
 	import Clock from './Clock.svelte';
+	import Compass from './Compass.svelte';
 	import Progress from './Progress.svelte';
 	import { todos } from '../../stores';
+	import DigiClock from './DigiClock.svelte';
 </script>
 
-<div class="container">
+<div class="container min-h-full min-w-full">
 	<div class="inner" style="z-index:1">
 		<Chart todos={$todos} />
 	</div>
 	<div class="inner" style="z-index:2">
 		<Clock />
 	</div>
-	<!-- <div class="inner" style="z-index:3">
-    <Progress/>
-  </div> -->
+	<div class="inner" style="z-index:3">
+		<Compass />
+	</div>
+	<div class="inner" style="z-index:4">
+		<DigiClock />
+	</div>
 </div>
 
 <style>
