@@ -52,7 +52,7 @@
 				id="todo-0"
 				autoComplete="off"
 				maxlength="40"
-				class=" min-w-full mb-4"
+				class=" min-w-full mb-4 py-2"
 			/>
 		</div>
 		<div class="flex justify-around mb-6">

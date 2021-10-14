@@ -1,5 +1,5 @@
 <footer>
-	<div class="flex flex-col items-center pt-16 ">
+	<div class="flex flex-col items-center pt-8 ">
 		<div class="flex mb-3 space-x-4">
 			<a href="mailto:trevorbehnke@gmail.com" alt="email" target="_blank" rel="noopener noreferrer">
 				<svg class="fill-current h-6 w-6" viewBox="0 0 20 20"

@@ -45,7 +45,7 @@ passing in the e.detail which in this case is the "name" variable -->
 <div class=" ">
 	<ul>
 		{#each todos as todo (todo.id)}
-			<li>
+			<li class=" mb-4">
 				<!-- Pass each todo as a prop to Todo.svelte | Receive two event dispatchers from Todo.svelte-->
 				<Todo
 					{todo}

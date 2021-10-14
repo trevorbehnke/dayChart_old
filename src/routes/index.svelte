@@ -6,7 +6,7 @@
 
 <div id="appContainer" class="grid grid-cols-1 md:grid-cols-2">
 	<!-- Two-way binding of the writable store with Todos.svelte"-->
-	<div class=" bg-yellow-200 mx-auto">
+	<div class=" bg-yellow-200 mx-auto mb-6">
 		<Todos bind:todos={$todos} />
 	</div>
 
