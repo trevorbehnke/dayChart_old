@@ -7,7 +7,7 @@
 	import DigiClock from './DigiClock.svelte';
 </script>
 
-<div class="container min-h-full min-w-full py-4">
+<div class="container min-h-full min-w-full">
 	<div class="inner" style="z-index:1">
 		<Chart todos={$todos} />
 	</div>
