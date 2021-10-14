@@ -1,6 +1,14 @@
-<h1 class="text-5xl mx-auto">Welcome to DayChart | Visualize Your Day!</h1>
-<br />
-<br />
-<br />
-<br />
-<br />
+<script>
+</script>
+
+<div class="bg-green-500 p-2">
+	<div class="flex justify-between max-w-5xl mx-auto">
+		<p class="text-2xl">Welcome to DayChart!</p>
+		<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+			>Sign Up</button
+		>
+	</div>
+</div>
+
+<style>
+</style>

@@ -11,14 +11,20 @@
 	$: completedTodos = todos.filter((t) => t.completed).length;
 </script>
 
-<div>
+<div class="flex justify-evenly mb-6">
 	<!-- Button to Select / Deselect All | Disabled if array is empy | Fires "checkAll" function above-->
-	<button type="button" disabled={todos.length === 0} on:click={checkAll}
-		>{completed ? 'Select' : 'Deselect'} All</button
+	<button
+		class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+		type="button"
+		disabled={todos.length === 0}
+		on:click={checkAll}>{completed ? 'Select' : 'Deselect'} All</button
 	>
 
 	<!-- Button to delete selected items | Emits "removeCompleted" dispatcher  -->
-	<button type="button" disabled={completedTodos === 0} on:click={() => dispatch('removeCompleted')}
-		>Delete Selected</button
+	<button
+		class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+		type="button"
+		disabled={completedTodos === 0}
+		on:click={() => dispatch('removeCompleted')}>Delete Selected</button
 	>
 </div>
