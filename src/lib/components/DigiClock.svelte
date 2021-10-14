@@ -11,12 +11,12 @@
 		};
 	});
 
-	let timeString = time.toLocaleString('en-us', {
+	$: timeString = time.toLocaleString('en-us', {
 		hour: 'numeric',
 		minute: 'numeric',
 		hour12: true
 	});
-	console.log(timeString);
+	// console.log(timeString);
 </script>
 
 <div>

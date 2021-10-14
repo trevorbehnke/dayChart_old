@@ -15,16 +15,16 @@
 		theChart = (a, b, c) => {
 			ctx = canvas.getContext('2d');
 			ctx.beginPath();
-			ctx.arc(200, 200, 150, a, b);
+			ctx.arc(170, 170, 150, a, b);
 			ctx.strokeStyle = c;
-			ctx.lineWidth = 30;
+			ctx.lineWidth = 20;
 			ctx.stroke();
 		};
 		theChart(radStart, radEnd, color);
 	};
 	afterUpdate(() => {
 		let ctx = canvas.getContext('2d');
-		ctx.clearRect(0, 0, 400, 400);
+		ctx.clearRect(0, 0, 340, 340);
 		todos.forEach(({ start, end, color }) => {
 			create(start, end, color);
 		});
@@ -32,7 +32,7 @@
 </script>
 
 <div>
-	<canvas bind:this={canvas} id="myChart" width="400" height="400" />
+	<canvas bind:this={canvas} id="myChart" width="340" height="340" />
 </div>
 
 <style>
